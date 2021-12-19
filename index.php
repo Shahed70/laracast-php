@@ -1,13 +1,14 @@
 <?php
+require 'core/bootstrap.php';
+ 
+//  $router = new Router();
 
-$query = require 'bootstrap.php';
+//  require 'routes.php';
+
+// $uri = trim($_SERVER['REQUEST_URI'],'/');
+
+// require $router->direct($uri);
 
 
- $allTodos = $query->selectAll('todolist');
-
-
- require "index.view.php";
-
-
-
+require Router::load('routes.php')->direct(Request::uri());
 
