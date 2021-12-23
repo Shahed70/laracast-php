@@ -4,9 +4,9 @@ return [
     'database' => [
         'dbname' => 'todos',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'connection' => 'mysql:host=localhost',
-        'exception' => [PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING]
+        'exception' => [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 
     ]
 ];

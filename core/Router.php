@@ -21,19 +21,37 @@ class Router
 
     public function direct($uri, $requestType)
     {
+    
         if (array_key_exists($uri, $this->routes[$requestType])) {
-            return $this->routes[$requestType][$uri];
+             $this->callAction(
+                 ...explode('@', $this->routes[$requestType][$uri])
+             );
         }
 
-        throw new Exception('no routes for this URI');
+       
     }
+
+
+    protected function callAction($controller, $action) {
+            $controller = new $controller;
+      
+            if(!method_exists($controller, $action)){
+                
+                throw new Exception("Controller does not respond to the $action action");
+            }
+
+            return $controller->$action();
+    }
+
 
 
     public function get($uri, $controller)
     {
-        die(var_dump($uri, $controller));
+      
         $this->routes['GET'][$uri] = $controller;
     }
+
+
 
     public function post($uri, $controller)
     {
