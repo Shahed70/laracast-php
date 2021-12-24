@@ -1,5 +1,8 @@
 <?php
 
+namespace App\controllers;
+use App\Core\App;
+
 class UserController
 {
 
@@ -15,7 +18,5 @@ class UserController
         App::get('database')->insert('users', ['name' => $_POST['name']]);
 
         return redirect('users');
-
-       
     }
 }
